@@ -5,7 +5,6 @@ import ProductCard from '../components/ProductCard';
 import { useDispatch, useSelector } from 'react-redux';
 import { saveProducts, saveCartProducts } from '../Reducer/ProductSlice';
 import {ProductDb} from '../db/ProductDb';
-import { Message } from '@mui/icons-material';
 const Home = () => {
   const dispatch = useDispatch();
   const { productsData = {} } = useSelector((state) => state);
@@ -31,7 +30,7 @@ const Home = () => {
     } else if (cartProducts.length > 0) {
       let matchedData = cartProducts.find((item) => item.id === data.id);
       if (matchedData) {
-        Message('This Product Already Added');
+        alert('This Product Already Added');
       } else {
         let cartCopy = [...cartProducts];
         cartCopy.push({ ...data, quantity: 1 });
